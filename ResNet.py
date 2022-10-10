@@ -78,7 +78,7 @@ class ResNet(keras.Model):
         self.layer4 = self.build_resblock(512, layer_dims[3], stride=2)
 
         """
-        我们没有办法知道最后一层Res-Block的输出的图像大小，我们就自适应输出
+        没有办法知道最后一层Res-Block的输出的图像大小
         """
         self.avgpool = layers.GlobalAveragePooling2D()
         """
@@ -87,9 +87,7 @@ class ResNet(keras.Model):
         self.fc = layers.Dense(num_classes)
 
     def call(self, inputs, training=None):
-        """
-        前向预算
-        """
+
         x = self.stem(inputs, training=training)
 
         x = self.layer1(x, training=training)
